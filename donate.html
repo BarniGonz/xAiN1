@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate to B4N1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- PayPal SDK Script (Part 1) -->
+    <script 
+      src="https://www.paypal.com/sdk/js?client-id=BAA6ll5-T1XEvco5Fn1TvMEjtPOkkXIBmwPx9PXJEZxUleH_zgmEdZrxSoANuUrbep7YO1ao1RF6JrNH2A&components=hosted-buttons&disable-funding=venmo&currency=USD">
+    </script>
+    <style>
+        :root {
+            --primary: #007bff;
+            --secondary: #ff6f00;
+            --bg: #333333;
+            --text: #ffffff;
+            --light-gray: #222222;
+            --glow: rgba(0, 123, 255, 0.5);
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            --bg-light: #f5f5f5;
+            --text-light: #333333;
+            --light-gray-light: #e0e0e0;
+            --glow-light: rgba(0, 123, 255, 0.3);
+            --shadow-light: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-theme {
+            --bg: var(--bg-light);
+            --text: var(--text-light);
+            --light-gray: var(--light-gray-light);
+            --glow: var(--glow-light);
+            --shadow: var(--shadow-light);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #111111, #222222);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        body.light-theme {
+            background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+        }
+
+        .donation-container {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .donation-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 123, 255, 0.3);
+        }
+
+        .donation-message {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--text);
+            opacity: 0.9;
+        }
+
+        #paypal-container-SGC98D6BPRFHU {
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1em;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--glow);
+        }
+
+        @media (max-width: 600px) {
+            .donation-container {
+                width: 90%;
+                padding: 20px;
+            }
+            .donation-message {
+                font-size: 1em;
+            }
+            .back-btn {
+                font-size: 0.9em;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="donation-container">
+        <div class="donation-message">
+            This AI is completely free to use, and I hope it brings value to your life.
+            If you find it helpful, I’d be deeply grateful for your support. Even a small
+            donation helps keep this project alive and growing. Your generosity means the
+            world to me—thank you for helping me continue building and sharing this with everyone.
+        </div>
+        <!-- PayPal Button (Part 2) -->
+        <div id="paypal-container-SGC98D6BPRFHU"></div>
+        <script>
+            paypal.HostedButtons({
+                hostedButtonId: "SGC98D6BPRFHU",
+            }).render("#paypal-container-SGC98D6BPRFHU")
+        </script>
+        <a href="index.html" class="back-btn">Back to Home</a>
+    </div>
+
+    <script>
+        // Load theme from localStorage
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+            }
+        }
+
+        // Initialize theme on load
+        loadTheme();
+    </script>
+</body>
+</html>
